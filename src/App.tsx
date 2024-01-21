@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import { useState } from "react";
 import ToDoForm from "./components/ToDoForm";
 import styled from "styled-components";
+import ProgressBar from "./components/ProgressBar";
 
 type Todo = {
   id: number;
@@ -13,6 +14,7 @@ type Todo = {
 
 export default function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [completedTodos, setCompletedTodos] = useState<number>(0);
   console.log("todos", todos);
 
   const createTodo = (name: string) => {
@@ -33,6 +35,13 @@ export default function App() {
     const todo = newTodos[index];
     todo.complete = !todo.complete;
     setTodos(newTodos);
+    setCompletedTodos(newTodos.filter((todo) => todo.complete).length);
+  };
+
+  const clearCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.complete);
+    setTodos(newTodos);
+    setCompletedTodos(0);
   };
 
   return (
@@ -52,9 +61,19 @@ export default function App() {
           >
             {todo.complete && <CheckMarkIcon />}
           </button>
-          <p>{todo.name}</p>
+          <p
+            style={{ textDecoration: todo.complete ? "line-through" : "none" }}
+          >
+            {todo.name}
+          </p>
         </Container>
       ))}
+
+      <ProgressBar
+        completedTodos={completedTodos}
+        totalTodos={todos.length}
+        clearCompleted={clearCompleted}
+      />
     </Layout>
   );
 }
