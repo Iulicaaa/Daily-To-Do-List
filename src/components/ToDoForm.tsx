@@ -34,10 +34,11 @@ const Container = styled.div`
   gap: 16px;
   position: relative;
   width: 600px;
+  margin-bottom: 20px;
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: 96%;
   height: 58px;
   flex-shrink: 0;
   fill: var(--FFFFFF, #fff);
@@ -63,7 +64,7 @@ const Button = styled.button`
   border: 1px solid var(--Mavi, #2d70fd);
   background: #2d70fd;
   position: absolute;
-  right: 10px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
 `;

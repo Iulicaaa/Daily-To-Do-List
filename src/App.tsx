@@ -62,6 +62,7 @@ export default function App() {
     >
       <Title>Daily To Do List</Title>
       <ToDoForm onSubmit={createTodo} />
+
       {sortedTodos.map((todo) => (
         <Container key={todo.id}>
           <button
@@ -69,7 +70,8 @@ export default function App() {
               borderRadius: "50%",
               width: "30px",
               height: "30px",
-              backgroundColor: todo.complete ? "green" : "gray",
+              backgroundColor: todo.complete ? "magenta" : "white",
+              border: "1px solid lightgrey",
             }}
             onClick={() => completeTodo(todo.id)}
           >
@@ -100,11 +102,25 @@ const Title = styled.h1`
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.48px;
+  text-align: left;
+  padding-left: 10px;
 `;
 
 const CheckMarkIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <path d="M26 0C11.664 0 0 11.663 0 26s11.664 26 26 26 26-11.663 26-26S40.336 0 26 0zm0 50C12.767 50 2 39.233 2 26S12.767 2 26 2s24 10.767 24 24-10.767 24-24 24zm10.293-37.707l-14 14c-.391.391-1.023.391-1.414 0l-7-7c-.391-.391-.391-1.023 0-1.414s1.023-.391 1.414 0L22 24.586l12.879-12.879c.391-.391 1.023-.391 1.414 0s.391 1.023 0 1.414z" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <path
+      d="M2.66666 8.66667L5.99999 12L13.3333 4.66667"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
   </svg>
 );
 
@@ -112,4 +128,5 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: space-between;
 `;

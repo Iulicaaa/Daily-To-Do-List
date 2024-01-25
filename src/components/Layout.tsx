@@ -49,9 +49,16 @@ const Card = styled.div`
   border-radius: 32px;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  overflow-y: auto; /* Make it scrollable */
 `;
 
 const Content = styled.div`
-  padding: 42px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto; /* Make it vertically scrollable */
+  overflow-x: hidden;
+  width: 80%;
+  max-width: 610px;
+  padding-top: 42px;
 `;
