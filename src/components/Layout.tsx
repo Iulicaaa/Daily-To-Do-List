@@ -1,14 +1,25 @@
 import styled from "styled-components";
+import ProgressBar from "./ProgressBar";
 
 type Props = {
   children: React.ReactNode;
+  completedTodos: number;
+  totalTodos: number;
+  clearCompleted: () => void;
 };
 
 const Layout = (props: Props) => {
+  const { children, completedTodos, totalTodos, clearCompleted } = props;
+
   return (
     <Background>
       <Card>
-        <Content>{props.children}</Content>
+        <Content>{children}</Content>
+        <ProgressBar
+          completedTodos={completedTodos}
+          totalTodos={totalTodos}
+          clearCompleted={clearCompleted}
+        />
       </Card>
     </Background>
   );
@@ -29,15 +40,16 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
-  height: 100%;
+  height: 670px;
   max-width: 1000px;
   max-height: 670px;
   flex-shrink: 0;
   border-radius: 32px;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow-y: auto; /* Make it scrollable */
 `;
 
 const Content = styled.div`

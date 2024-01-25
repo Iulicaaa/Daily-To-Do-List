@@ -44,11 +44,25 @@ export default function App() {
     setCompletedTodos(0);
   };
 
+  const sortedTodos = [...todos].sort((a, b) => {
+    // Sort primarily by completion status
+    if (a.complete !== b.complete) {
+      return a.complete ? 1 : -1;
+    }
+
+    // If completion status is the same, sort by creation time
+    return a.createdAt < b.createdAt ? 1 : -1;
+  });
+
   return (
-    <Layout>
+    <Layout
+      completedTodos={completedTodos}
+      totalTodos={todos.length}
+      clearCompleted={clearCompleted}
+    >
       <Title>Daily To Do List</Title>
       <ToDoForm onSubmit={createTodo} />
-      {todos.map((todo) => (
+      {sortedTodos.map((todo) => (
         <Container key={todo.id}>
           <button
             style={{
@@ -69,11 +83,11 @@ export default function App() {
         </Container>
       ))}
 
-      <ProgressBar
+      {/* <ProgressBar
         completedTodos={completedTodos}
         totalTodos={todos.length}
         clearCompleted={clearCompleted}
-      />
+      /> */}
     </Layout>
   );
 }

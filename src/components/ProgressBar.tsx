@@ -5,21 +5,29 @@ const ProgressBarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 60%;
+  padding-bottom: 20px;
+  border-top: 1px solid lightgrey;
+  padding: 5px;
+  margin-bottom: 20px;
 `;
 
-const ProgressBar = styled.div`
+const ProgressBarStyled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: left;
+  justify-content: left;
   height: 20px;
-  width: 100%;
-  background: #eee;
+  width: 80%;
+  background: transparent;
+  color: #b1bacb;
 `;
 
 const ClearButton = styled.button`
   color: #b1bacb;
-  text-align: right;
+  display: flex;
+  text-align: center;
+  align-items: left;
   font-feature-settings: "liga" off;
   font-family: Inter;
   font-size: 16px;
@@ -27,6 +35,8 @@ const ClearButton = styled.button`
   font-weight: 500;
   line-height: 110%; /* 17.6px */
   letter-spacing: 0.16px;
+  background-color: transparent;
+  border: none;
 `;
 
 interface Props {
@@ -35,14 +45,15 @@ interface Props {
   clearCompleted: () => void;
 }
 
-const ProgressBarAndClearButton: React.FC<Props> = ({
+const ProgressBar: React.FC<Props> = ({
   completedTodos,
+
   clearCompleted,
 }) => (
   <ProgressBarContainer>
-    <ProgressBar>{completedTodos} Tasks completed</ProgressBar>
-    <ClearButton onClick={clearCompleted}>Clear Completed</ClearButton>
+    <ProgressBarStyled>{completedTodos} Tasks completed</ProgressBarStyled>
+    <ClearButton onClick={clearCompleted}>Clear All</ClearButton>
   </ProgressBarContainer>
 );
 
-export default ProgressBarAndClearButton;
+export default ProgressBar;
