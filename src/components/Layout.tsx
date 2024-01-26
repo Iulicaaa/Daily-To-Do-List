@@ -56,8 +56,6 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  overflow-y: auto; /* Make it vertically scrollable */
-  overflow-x: hidden;
   width: 80%;
   max-width: 610px;
   padding-top: 42px;

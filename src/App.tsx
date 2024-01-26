@@ -3,7 +3,8 @@ import Layout from "./components/Layout";
 import { useState } from "react";
 import ToDoForm from "./components/ToDoForm";
 import styled from "styled-components";
-import ProgressBar from "./components/ProgressBar";
+import "./font.css";
+// import ProgressBar from "./components/ProgressBar";
 
 type Todo = {
   id: number;
@@ -62,29 +63,31 @@ export default function App() {
     >
       <Title>Daily To Do List</Title>
       <ToDoForm onSubmit={createTodo} />
-
-      {sortedTodos.map((todo) => (
-        <Container key={todo.id}>
-          <button
-            style={{
-              borderRadius: "50%",
-              width: "30px",
-              height: "30px",
-              backgroundColor: todo.complete ? "magenta" : "white",
-              border: "1px solid lightgrey",
-            }}
-            onClick={() => completeTodo(todo.id)}
-          >
-            {todo.complete && <CheckMarkIcon />}
-          </button>
-          <p
-            style={{ textDecoration: todo.complete ? "line-through" : "none" }}
-          >
-            {todo.name}
-          </p>
-        </Container>
-      ))}
-
+      <List>
+        {sortedTodos.map((todo) => (
+          <Container key={todo.id}>
+            <button
+              style={{
+                borderRadius: "50%",
+                width: "30px",
+                height: "30px",
+                backgroundColor: todo.complete ? "magenta" : "white",
+                border: "1px solid lightgrey",
+              }}
+              onClick={() => completeTodo(todo.id)}
+            >
+              {todo.complete && <CheckMarkIcon />}
+            </button>
+            <p
+              style={{
+                textDecoration: todo.complete ? "line-through" : "none",
+              }}
+            >
+              {todo.name}
+            </p>
+          </Container>
+        ))}
+      </List>
       {/* <ProgressBar
         completedTodos={completedTodos}
         totalTodos={todos.length}
@@ -129,4 +132,15 @@ const Container = styled.div`
   align-items: center;
   gap: 10px;
   justify-content: space-between;
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto; /* Make it vertically scrollable */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 590px;
+  padding-top: 20px;
 `;
