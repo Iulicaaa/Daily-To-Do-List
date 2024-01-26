@@ -16,6 +16,7 @@ const ProgressBarStyled = styled.div`
   display: flex;
   align-items: center;
   text-align: left;
+  font-family: Inter;
   justify-content: left;
   height: 20px;
   width: 80%;

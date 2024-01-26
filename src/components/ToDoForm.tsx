@@ -34,7 +34,6 @@ const Container = styled.div`
   gap: 16px;
   position: relative;
   width: 600px;
-  margin-bottom: 20px;
 `;
 
 const Input = styled.input`

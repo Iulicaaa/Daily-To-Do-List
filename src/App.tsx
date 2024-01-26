@@ -140,6 +140,7 @@ const List = styled.div`
   align-items: flex-start;
   overflow-y: auto; /* Make it vertically scrollable */
   overflow-x: hidden;
+  max-height: 370px;
   width: 100%;
   max-width: 590px;
   padding-top: 20px;
